@@ -52,6 +52,7 @@ class _AnimationLimiterState extends State<AnimationLimiter> {
   Widget build(BuildContext context) {
     return _AnimationLimiterProvider(
       shouldRunAnimation: _shouldRunAnimation,
+      child: widget.child,
     );
   }
 }
@@ -61,7 +62,9 @@ class _AnimationLimiterProvider extends InheritedWidget {
 
   _AnimationLimiterProvider({
     this.shouldRunAnimation,
-  });
+    @required Widget child,
+  })  : assert(child != null),
+        super(child: child);
 
   @override
   bool updateShouldNotify(InheritedWidget oldWidget) {
