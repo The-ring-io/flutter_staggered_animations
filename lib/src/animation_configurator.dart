@@ -1,11 +1,11 @@
 import 'package:flutter/widgets.dart';
-import 'animation_executor.dart';
 import 'animation_configuration.dart';
+import 'animation_executor.dart';
 
 class AnimationConfigurator extends StatelessWidget {
   final Duration duration;
   final Duration delay;
-  final Widget Function(Animation) animatedChildBuilder;
+  final Widget Function(Animation<double>) animatedChildBuilder;
 
   const AnimationConfigurator({
     Key key,
@@ -49,7 +49,7 @@ class AnimationConfigurator extends StatelessWidget {
 
   Duration stagger(
       int position, Duration duration, Duration delay, int columnCount) {
-    int delayInMilliseconds =
+    var delayInMilliseconds =
         (delay == null ? duration.inMilliseconds ~/ 6 : delay.inMilliseconds);
 
     int _computeStaggeredGridDuration() {

@@ -52,18 +52,15 @@ class _AnimationLimiterState extends State<AnimationLimiter> {
   Widget build(BuildContext context) {
     return _AnimationLimiterProvider(
       shouldRunAnimation: _shouldRunAnimation,
-      child: widget.child,
     );
   }
 }
 
 class _AnimationLimiterProvider extends InheritedWidget {
   final bool shouldRunAnimation;
-  final Widget child;
 
   _AnimationLimiterProvider({
     this.shouldRunAnimation,
-    this.child,
   });
 
   @override
@@ -72,6 +69,7 @@ class _AnimationLimiterProvider extends InheritedWidget {
   }
 
   static _AnimationLimiterProvider of(BuildContext context) {
-    return context.ancestorWidgetOfExactType(_AnimationLimiterProvider);
+    return context.ancestorWidgetOfExactType(_AnimationLimiterProvider)
+        as _AnimationLimiterProvider;
   }
 }

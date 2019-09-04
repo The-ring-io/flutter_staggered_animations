@@ -2,11 +2,14 @@ import 'dart:math';
 import 'package:flutter/widgets.dart';
 import 'animation_configurator.dart';
 
-/// An enum representing a flix axis.
-///
-/// [x] represents a vertical flip.
-/// [y] represents a horizontal flip.
-enum FlipAxis { x, y }
+/// An enum representing a flip axis.
+enum FlipAxis {
+  /// The x axis (vertical flip)
+  x,
+
+  /// The y axis (horizontal flip)
+  y,
+}
 
 /// An animation that flips its child either vertically or horizontally.
 class FlipAnimation extends StatelessWidget {
@@ -45,16 +48,16 @@ class FlipAnimation extends StatelessWidget {
     );
   }
 
-  Widget _flipAnimation(animationController) {
+  Widget _flipAnimation(Animation<double> animation) {
     final _flipAnimation = Tween<double>(begin: 0, end: 1).animate(
       CurvedAnimation(
-        parent: animationController,
+        parent: animation,
         curve: Interval(0.0, 1.0, curve: Curves.ease),
       ),
     );
 
     Matrix4 _computeTransformationMatrix() {
-      double radians = (1 - _flipAnimation.value) * pi / 2;
+      var radians = (1 - _flipAnimation.value) * pi / 2;
 
       switch (flipAxis) {
         case FlipAxis.y:
@@ -65,7 +68,7 @@ class FlipAnimation extends StatelessWidget {
       }
     }
 
-    return new Transform(
+    return Transform(
       transform: _computeTransformationMatrix(),
       alignment: Alignment.center,
       child: child,

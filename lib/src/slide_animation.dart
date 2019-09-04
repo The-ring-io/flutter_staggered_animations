@@ -29,13 +29,12 @@ class SlideAnimation extends StatelessWidget {
     Key key,
     this.duration,
     this.delay,
-    verticalOffset,
+    double verticalOffset,
     this.horizontalOffset = 0.0,
     @required this.child,
-  })  : this.verticalOffset =
-            (verticalOffset == null && horizontalOffset == null)
-                ? 50.0
-                : (verticalOffset ?? 0.0),
+  })  : verticalOffset = (verticalOffset == null && horizontalOffset == null)
+            ? 50.0
+            : (verticalOffset ?? 0.0),
         assert(child != null),
         super(key: key);
 
@@ -48,12 +47,12 @@ class SlideAnimation extends StatelessWidget {
     );
   }
 
-  Widget _slideAnimation(animationController) {
+  Widget _slideAnimation(Animation<double> animation) {
     Animation<double> offsetAnimation(
-        double offset, AnimationController animationController) {
+        double offset, Animation<double> animation) {
       return Tween<double>(begin: offset, end: 0.0).animate(
         CurvedAnimation(
-          parent: animationController,
+          parent: animation,
           curve: Interval(0.0, 1.0, curve: Curves.ease),
         ),
       );
@@ -63,10 +62,10 @@ class SlideAnimation extends StatelessWidget {
       offset: Offset(
         horizontalOffset == 0.0
             ? 0.0
-            : offsetAnimation(horizontalOffset, animationController).value,
+            : offsetAnimation(horizontalOffset, animation).value,
         verticalOffset == 0.0
             ? 0.0
-            : offsetAnimation(verticalOffset, animationController).value,
+            : offsetAnimation(verticalOffset, animation).value,
       ),
       child: child,
     );

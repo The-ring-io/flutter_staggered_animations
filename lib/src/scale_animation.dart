@@ -39,10 +39,10 @@ class ScaleAnimation extends StatelessWidget {
     );
   }
 
-  Widget _landingAnimation(animationController) {
+  Widget _landingAnimation(Animation<double> animation) {
     final _landingAnimation = Tween<double>(begin: scale, end: 1.0).animate(
       CurvedAnimation(
-        parent: animationController,
+        parent: animation,
         curve: Interval(0.0, 1.0, curve: Curves.ease),
       ),
     );

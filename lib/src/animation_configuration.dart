@@ -26,8 +26,6 @@ class AnimationConfiguration extends InheritedWidget {
   /// The column count of the grid
   final int columnCount;
 
-  final Widget child;
-
   /// Configure the children's animation to be synchronized (all the children's animation start at the same time).
   ///
   /// Default value for [duration] is 225ms.
@@ -36,10 +34,10 @@ class AnimationConfiguration extends InheritedWidget {
   const AnimationConfiguration.synchronized({
     Key key,
     this.duration = const Duration(milliseconds: 225),
-    @required this.child,
-  })  : this.position = 0,
-        this.delay = Duration.zero,
-        this.columnCount = 1,
+    @required Widget child,
+  })  : position = 0,
+        delay = Duration.zero,
+        columnCount = 1,
         assert(duration != null),
         assert(child != null),
         super(key: key, child: child);
@@ -68,11 +66,11 @@ class AnimationConfiguration extends InheritedWidget {
     @required this.position,
     this.duration = const Duration(milliseconds: 225),
     this.delay,
-    @required this.child,
-  })  : this.columnCount = 1,
+    @required Widget child,
+  })  : columnCount = 1,
         assert(duration != null),
         assert(child != null),
-        super(key: key);
+        super(key: key, child: child);
 
   /// Configure the children's animation to be staggered.
   ///
@@ -101,11 +99,11 @@ class AnimationConfiguration extends InheritedWidget {
     this.duration = const Duration(milliseconds: 225),
     this.delay,
     @required this.columnCount,
-    @required this.child,
+    @required Widget child,
   })  : assert(duration != null),
         assert(columnCount != null && columnCount > 0),
         assert(child != null),
-        super(key: key);
+        super(key: key, child: child);
 
   @override
   bool updateShouldNotify(InheritedWidget oldWidget) {
@@ -137,30 +135,30 @@ class AnimationConfiguration extends InheritedWidget {
   ///
   /// The [children] argument must not be null.
   /// It corresponds to the children you would normally have passed to the [Column] or [Row].
-  static toStaggeredList({
+  static List<Widget> toStaggeredList({
     Duration duration,
     Duration delay,
     @required Widget Function(Widget) childAnimationBuilder,
     @required List<Widget> children,
-  }) {
-    return children
-        .asMap()
-        .map((index, widget) {
-          return MapEntry(
-            index,
-            AnimationConfiguration.staggeredList(
-              position: index,
-              duration: duration ?? const Duration(milliseconds: 225),
-              delay: delay,
-              child: childAnimationBuilder(widget),
-            ),
-          );
-        })
-        .values
-        .toList();
-  }
+  }) =>
+      children
+          .asMap()
+          .map((index, widget) {
+            return MapEntry(
+              index,
+              AnimationConfiguration.staggeredList(
+                position: index,
+                duration: duration ?? const Duration(milliseconds: 225),
+                delay: delay,
+                child: childAnimationBuilder(widget),
+              ),
+            );
+          })
+          .values
+          .toList();
 
   static AnimationConfiguration of(BuildContext context) {
-    return context.ancestorWidgetOfExactType(AnimationConfiguration);
+    return context.ancestorWidgetOfExactType(AnimationConfiguration)
+        as AnimationConfiguration;
   }
 }

@@ -32,7 +32,7 @@ class FadeInAnimation extends StatelessWidget {
     );
   }
 
-  Widget _fadeInAnimation(animation) {
+  Widget _fadeInAnimation(Animation<double> animation) {
     final _opacityAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(
         parent: animation,
