@@ -3,7 +3,10 @@
 Easily add staggered animations to your `ListView`, `GridView`, `Column` and `Row` children as shown in [Material Design guidelines](https://material.io/design/motion/customization.html#sequencing)
 
 ## Showcase
-<img src="assets/card_list.gif" width="32%"> <img src="assets/card_grid.gif" width="32%"> <img src="assets/card_column.gif" width="32%">
+
+| ListView                  | GridView                   | Column                       |
+| ---                       | ---                        | ---                          |
+|![](assets/card_list.gif)  | ![](assets/card_grid.gif)  | ![](assets/card_column.gif)  |
 
 
 ## Installation
