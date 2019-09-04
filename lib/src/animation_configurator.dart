@@ -22,9 +22,11 @@ class AnimationConfigurator extends StatelessWidget {
       throw FlutterError.fromParts(
         <DiagnosticsNode>[
           ErrorSummary('Animation not wrapped in an AnimationConfiguration.'),
-          ErrorDescription('This error happens if you use an Animation that is not wrapped in an '
+          ErrorDescription(
+              'This error happens if you use an Animation that is not wrapped in an '
               'AnimationConfiguration.'),
-          ErrorHint('The solution is to wrap your Animation(s) with an AnimationConfiguration. '
+          ErrorHint(
+              'The solution is to wrap your Animation(s) with an AnimationConfiguration. '
               'Reminder: an AnimationConfiguration provides the configuration '
               'used as a base for every children Animation. Configuration made in AnimationConfiguration '
               'can be overridden in Animation children if needed.'),
@@ -40,21 +42,28 @@ class AnimationConfigurator extends StatelessWidget {
     return AnimationExecutor(
       duration: _duration,
       delay: stagger(_position, _duration, _delay, _columnCount),
-      builder: (context, animationController) => animatedChildBuilder(animationController),
+      builder: (context, animationController) =>
+          animatedChildBuilder(animationController),
     );
   }
 
-  Duration stagger(int position, Duration duration, Duration delay, int columnCount) {
-    int delayInMilliseconds = (delay == null ? duration.inMilliseconds ~/ 6 : delay.inMilliseconds);
+  Duration stagger(
+      int position, Duration duration, Duration delay, int columnCount) {
+    int delayInMilliseconds =
+        (delay == null ? duration.inMilliseconds ~/ 6 : delay.inMilliseconds);
 
     int _computeStaggeredGridDuration() {
-      return (position ~/ columnCount + position % columnCount) * delayInMilliseconds;
+      return (position ~/ columnCount + position % columnCount) *
+          delayInMilliseconds;
     }
 
     int _computeStaggeredListDuration() {
       return position * delayInMilliseconds;
     }
 
-    return Duration(milliseconds: columnCount > 1 ? _computeStaggeredGridDuration() : _computeStaggeredListDuration());
+    return Duration(
+        milliseconds: columnCount > 1
+            ? _computeStaggeredGridDuration()
+            : _computeStaggeredListDuration());
   }
 }

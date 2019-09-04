@@ -5,7 +5,8 @@ authors:
   - Aurélien Lepage <aurelien@mobiten.com>
   - Charles-Henri Dumalin <charles-henri@mobiten.com>
   - Florent Huran <florent@mobiten.com>
-homepage: https://mobiten.com
+repository: https://github.com/mobiten/flutter_staggered_animations
+issue_tracker: https://github.com/mobiten/flutter_staggered_animations/issues
 
 environment:
   sdk: ">=2.1.0 <3.0.0"

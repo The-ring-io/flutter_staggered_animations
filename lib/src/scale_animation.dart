@@ -5,10 +5,13 @@ import 'animation_configurator.dart';
 class ScaleAnimation extends StatelessWidget {
   /// The duration of the child animation.
   final Duration duration;
+
   /// The delay between the beginning of two children's animations.
   final Duration delay;
+
   /// Scaling factor to apply at the start of the animation.
   final double scale;
+
   /// The child Widget to animate.
   final Widget child;
 
