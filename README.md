@@ -21,7 +21,7 @@ dependencies:
 ### Import
 Import the package in your code file.
 ```dart
-import 'package:flutter_list_animation/staggered_animation.dart';
+import 'package:flutter_staggered_animation/staggered_animation.dart';
 ```
 
 ## Basic usage
