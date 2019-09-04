@@ -6,7 +6,7 @@ Easily add staggered animations to your `ListView`, `GridView`, `Column` and `Ro
 
 | ListView                  | GridView                   | Column                       |
 | ---                       | ---                        | ---                          |
-|![](assets/card_list.gif)  | ![](assets/card_grid.gif)  | ![](assets/card_column.gif)  |
+|![](https://github.com/mobiten/flutter_staggered_animations/blob/master/assets/card_list.gif?raw=true)  | ![](https://github.com/mobiten/flutter_staggered_animations/blob/master/assets/card_grid.gif?raw=true)  | ![](https://github.com/mobiten/flutter_staggered_animations/blob/master/assets/card_column.gif?raw=true)  |
 
 
 ## Installation
