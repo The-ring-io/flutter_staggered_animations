@@ -124,8 +124,6 @@ class AnimationConfiguration extends InheritedWidget {
   ///
   /// The [childAnimationBuilder] is a function that will be applied to each child you provide in [children]
   ///
-  /// {@tool sample}
-  ///
   /// The following is an example of a [childAnimationBuilder] you could provide:
   ///
   /// ```dart
@@ -136,7 +134,6 @@ class AnimationConfiguration extends InheritedWidget {
   ///   ),
   /// )
   /// ```
-  /// {@end-tool}
   ///
   /// The [children] argument must not be null.
   /// It corresponds to the children you would normally have passed to the [Column] or [Row].
