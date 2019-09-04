@@ -9,7 +9,6 @@ dependencies:
   flutter:
     sdk: flutter
 
-  shrine_images: 1.1.1
   flutter_staggered_animations:
     path: ../
 
