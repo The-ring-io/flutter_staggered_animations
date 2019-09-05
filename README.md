@@ -214,4 +214,8 @@ Flutter Staggered Animations is released under the [MIT License](LICENSE)
 
 We are a french mobile design and development team.
 
-Website : <https://www.mobiten.com>
+Website : <a href="https://www.mobiten.com" target="_blank">https://www.mobiten.com</a>
+
+<a href="https://www.mobiten.com" target="_blank">
+    <img src="assets/mobiten_white_on_black.png" height="56">
+</a>
