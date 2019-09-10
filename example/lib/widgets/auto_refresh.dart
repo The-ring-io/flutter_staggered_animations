@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 /// Automatically rebuild [child] widget after the given [duration]
@@ -20,6 +22,8 @@ class _AutoRefreshState extends State<AutoRefresh> {
   int keyValue;
   ValueKey key;
 
+  Timer _timer;
+
   @override
   void initState() {
     super.initState();
@@ -39,7 +43,7 @@ class _AutoRefreshState extends State<AutoRefresh> {
   }
 
   void _recursiveBuild() {
-    Future.delayed(
+    _timer = Timer(
       widget.duration,
       () {
         setState(() {
@@ -49,5 +53,11 @@ class _AutoRefreshState extends State<AutoRefresh> {
         });
       },
     );
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
   }
 }
