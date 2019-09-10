@@ -22,6 +22,7 @@ class _CardGridScreenState extends State<CardGridScreen> {
         body: SafeArea(
           child: AnimationLimiter(
             child: GridView.count(
+              childAspectRatio: 1.0,
               padding: const EdgeInsets.all(8.0),
               crossAxisCount: columnCount,
               children: List.generate(
@@ -34,10 +35,7 @@ class _CardGridScreenState extends State<CardGridScreen> {
                     child: ScaleAnimation(
                       scale: 0.5,
                       child: FadeInAnimation(
-                        child: EmptyCard(
-                          width: MediaQuery.of(context).size.width,
-                          height: 88.0,
-                        ),
+                        child: EmptyCard(),
                       ),
                     ),
                   );

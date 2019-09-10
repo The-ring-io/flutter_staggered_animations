@@ -160,7 +160,7 @@ Widget build(BuildContext context) {
         children: List.generate(
           100,
           (int index) {
-            return AnimationConfiguration.staggeredList(
+            return AnimationConfiguration.staggeredGrid(
               position: index,
               duration: const Duration(milliseconds: 375),
               columnCount: columnCount,
