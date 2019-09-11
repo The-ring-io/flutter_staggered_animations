@@ -15,7 +15,7 @@ Easily add staggered animations to your `ListView`, `GridView`, `Column` and `Ro
 Add the package as a dependency in your pubspec.yaml file.
 ```yaml
 dependencies:
-  flutter_staggered_animations: "^0.1.1"
+  flutter_staggered_animations: "^0.1.2"
 ```
 
 ### Import
