@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/widgets.dart';
 import 'animation_limiter.dart';
 
@@ -25,6 +27,8 @@ class _AnimationExecutorState extends State<AnimationExecutor>
     with SingleTickerProviderStateMixin {
   AnimationController _animationController;
 
+  Timer _timer;
+
   @override
   void initState() {
     super.initState();
@@ -33,7 +37,7 @@ class _AnimationExecutorState extends State<AnimationExecutor>
         AnimationController(duration: widget.duration, vsync: this);
 
     if (AnimationLimiter.shouldRunAnimation(context) ?? true) {
-      Future.delayed(widget.delay, () => _animationController.forward());
+      _timer = Timer(widget.delay,  () => _animationController.forward());
     } else {
       _animationController.value = 1.0;
     }
@@ -49,6 +53,7 @@ class _AnimationExecutorState extends State<AnimationExecutor>
 
   @override
   void dispose() {
+    _timer?.cancel();
     _animationController.dispose();
     super.dispose();
   }
