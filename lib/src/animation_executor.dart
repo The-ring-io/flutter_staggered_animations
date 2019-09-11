@@ -26,7 +26,6 @@ class AnimationExecutor extends StatefulWidget {
 class _AnimationExecutorState extends State<AnimationExecutor>
     with SingleTickerProviderStateMixin {
   AnimationController _animationController;
-
   Timer _timer;
 
   @override
@@ -37,7 +36,7 @@ class _AnimationExecutorState extends State<AnimationExecutor>
         AnimationController(duration: widget.duration, vsync: this);
 
     if (AnimationLimiter.shouldRunAnimation(context) ?? true) {
-      _timer = Timer(widget.delay,  () => _animationController.forward());
+      _timer = Timer(widget.delay, () => _animationController.forward());
     } else {
       _animationController.value = 1.0;
     }

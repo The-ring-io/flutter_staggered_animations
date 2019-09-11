@@ -40,7 +40,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.0.1"
+    version: "0.1.1"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -81,13 +81,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.3"
-  shrine_images:
-    dependency: "direct main"
-    description:
-      name: shrine_images
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.1.1"
   sky_engine:
     dependency: transitive
     description: flutter

@@ -32,7 +32,7 @@ class _CardGridScreenState extends State<CardGridScreen> {
                     columnCount: columnCount,
                     position: index,
                     duration: const Duration(milliseconds: 375),
-                    child: ScaleAnimation(
+                    child: const ScaleAnimation(
                       scale: 0.5,
                       child: FadeInAnimation(
                         child: EmptyCard(),

@@ -6,8 +6,8 @@ class EmptyCard extends StatelessWidget {
 
   const EmptyCard({
     Key key,
-    this.width = 100,
-    this.height = 100,
+    this.width,
+    this.height,
   }) : super(key: key);
 
   @override
