@@ -36,15 +36,16 @@ class AnimationLimiter extends StatefulWidget {
 
 class _AnimationLimiterState extends State<AnimationLimiter> {
   bool _shouldRunAnimation = true;
+  bool _afterDispose = false;
 
   @override
   void initState() {
     super.initState();
 
     WidgetsBinding.instance.addPostFrameCallback((Duration value) {
-      setState(() {
-        _shouldRunAnimation = false;
-      });
+      if (!_afterDispose && this.mounted) {
+        setState(() => _shouldRunAnimation = false);
+      }
     });
   }
 
@@ -54,6 +55,12 @@ class _AnimationLimiterState extends State<AnimationLimiter> {
       shouldRunAnimation: _shouldRunAnimation,
       child: widget.child,
     );
+  }
+
+  @override
+  void dispose() {
+    _afterDispose = true;
+    super.dispose();
   }
 }
 
