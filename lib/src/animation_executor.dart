@@ -35,8 +35,15 @@ class _AnimationExecutorState extends State<AnimationExecutor>
     _animationController =
         AnimationController(duration: widget.duration, vsync: this);
 
-    if (AnimationLimiter.shouldRunAnimation(context) ?? true) {
-      _timer = Timer(widget.delay, () => _animationController.forward());
+    if (_shouldRunAnimation) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (_shouldRunAnimation) {
+          _timer = Timer(
+            widget.delay,
+            () => _animationController.forward()
+          );
+        }
+      });
     } else {
       _animationController.value = 1.0;
     }
@@ -60,4 +67,6 @@ class _AnimationExecutorState extends State<AnimationExecutor>
   Widget _buildAnimation(BuildContext context, Widget child) {
     return widget.builder(context, _animationController);
   }
+
+  bool get _shouldRunAnimation => AnimationLimiter.shouldRunAnimation(context) ?? true;
 }
