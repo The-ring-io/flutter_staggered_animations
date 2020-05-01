@@ -1,6 +1,6 @@
 name: flutter_staggered_animations
 description: Easily add staggered animations to your ListView, GridView, Column and Row children as shown in Material Design guidelines
-version: 0.1.2
+version: 0.1.3
 authors:
   - Aurélien Lepage <aurelien@mobiten.com>
   - Charles-Henri Dumalin <charles-henri@mobiten.com>
