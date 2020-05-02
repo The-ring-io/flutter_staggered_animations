@@ -26,6 +26,12 @@ class AnimationConfiguration extends InheritedWidget {
   /// The column count of the grid
   final int columnCount;
 
+  /// How many rows on the `mainAxis` until the delay is reset to 0. 
+  /// Use on very long `ListView` or `GridView` to avoid a very high [delay].
+  /// Keep the number similar to the expected number of rows in screen.
+  /// An alternative to `AnimationLimiter`.
+  final int resetDelayEvery;
+
   /// Configure the children's animation to be synchronized (all the children's animation start at the same time).
   ///
   /// Default value for [duration] is 225ms.
@@ -38,6 +44,7 @@ class AnimationConfiguration extends InheritedWidget {
   })  : position = 0,
         delay = Duration.zero,
         columnCount = 1,
+        resetDelayEvery = 1,
         assert(duration != null),
         assert(child != null),
         super(key: key, child: child);
@@ -66,6 +73,7 @@ class AnimationConfiguration extends InheritedWidget {
     @required this.position,
     this.duration = const Duration(milliseconds: 225),
     this.delay,
+    this.resetDelayEvery,
     @required Widget child,
   })  : columnCount = 1,
         assert(duration != null),
@@ -98,6 +106,7 @@ class AnimationConfiguration extends InheritedWidget {
     @required this.position,
     this.duration = const Duration(milliseconds: 225),
     this.delay,
+    this.resetDelayEvery,
     @required this.columnCount,
     @required Widget child,
   })  : assert(duration != null),

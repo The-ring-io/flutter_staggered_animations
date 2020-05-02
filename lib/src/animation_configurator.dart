@@ -34,30 +34,40 @@ class AnimationConfigurator extends StatelessWidget {
       );
     }
 
-    final _position = animationConfiguration.position ?? 0;
+    final _position = animationConfiguration.position ?? 0 + 1;
     final _duration = duration ?? animationConfiguration.duration;
     final _delay = delay ?? animationConfiguration.delay;
     final _columnCount = animationConfiguration.columnCount;
+    final _resetDelayEvery = animationConfiguration.resetDelayEvery;
 
     return AnimationExecutor(
       duration: _duration,
-      delay: stagger(_position, _duration, _delay, _columnCount),
+      delay:
+          stagger(_position, _duration, _delay, _columnCount, _resetDelayEvery),
       builder: (context, animationController) =>
           animatedChildBuilder(animationController),
     );
   }
 
-  Duration stagger(
-      int position, Duration duration, Duration delay, int columnCount) {
-    var delayInMilliseconds =
-        (delay == null ? duration.inMilliseconds ~/ 6 : delay.inMilliseconds);
+  Duration stagger(int position, Duration duration, Duration delay,
+      int columnCount, int resetDelayEvery) {
+    final delayInMilliseconds =
+        (delay?.inMilliseconds ?? duration.inMilliseconds ~/ 6);
 
     int _computeStaggeredGridDuration() {
-      return (position ~/ columnCount + position % columnCount) *
-          delayInMilliseconds;
+      var row = position ~/ columnCount;
+      if (resetDelayEvery != null) {
+        row = row % resetDelayEvery;
+      }
+      var calculatedPosition = row + position % columnCount;
+      return calculatedPosition * delayInMilliseconds;
     }
 
     int _computeStaggeredListDuration() {
+      if (resetDelayEvery != null) {
+        return (position ~/ resetDelayEvery) * delayInMilliseconds;
+      }
+
       return position * delayInMilliseconds;
     }
 
