@@ -36,7 +36,7 @@ class FadeInAnimation extends StatelessWidget {
     final _opacityAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(
         parent: animation,
-        curve: Interval(0.0, 1.0, curve: Curves.ease),
+        curve: const Interval(0.0, 1.0, curve: Curves.ease),
       ),
     );
 

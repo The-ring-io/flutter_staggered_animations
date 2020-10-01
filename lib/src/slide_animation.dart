@@ -6,6 +6,9 @@ class SlideAnimation extends StatelessWidget {
   /// The duration of the child animation.
   final Duration duration;
 
+  /// The curve of the child animation. Defaults to [Curves.ease]
+  final Curve curve;
+
   /// The delay between the beginning of two children's animations.
   final Duration delay;
 
@@ -28,6 +31,7 @@ class SlideAnimation extends StatelessWidget {
   const SlideAnimation({
     Key key,
     this.duration,
+    this.curve = Curves.ease,
     this.delay,
     double verticalOffset,
     this.horizontalOffset = 0.0,
@@ -35,6 +39,7 @@ class SlideAnimation extends StatelessWidget {
   })  : verticalOffset = (verticalOffset == null && horizontalOffset == null)
             ? 50.0
             : (verticalOffset ?? 0.0),
+        assert(curve != null),
         assert(child != null),
         super(key: key);
 
@@ -53,7 +58,7 @@ class SlideAnimation extends StatelessWidget {
       return Tween<double>(begin: offset, end: 0.0).animate(
         CurvedAnimation(
           parent: animation,
-          curve: Interval(0.0, 1.0, curve: Curves.ease),
+          curve: Interval(0.0, 1.0, curve: curve),
         ),
       );
     }

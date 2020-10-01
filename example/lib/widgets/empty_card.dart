@@ -16,14 +16,14 @@ class EmptyCard extends StatelessWidget {
       width: width,
       height: height,
       margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8.0),
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.white,
-        borderRadius: const BorderRadius.all(Radius.circular(4.0)),
+        borderRadius: BorderRadius.all(Radius.circular(4.0)),
         boxShadow: <BoxShadow>[
           BoxShadow(
             color: Colors.black12,
             blurRadius: 4.0,
-            offset: const Offset(0.0, 4.0),
+            offset: Offset(0.0, 4.0),
           ),
         ],
       ),

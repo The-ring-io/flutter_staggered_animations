@@ -16,6 +16,9 @@ class FlipAnimation extends StatelessWidget {
   /// The duration of the child animation.
   final Duration duration;
 
+  /// The curve of the child animation. Defaults to [Curves.ease]
+  final Curve curve;
+
   /// The delay between the beginning of two children's animations.
   final Duration delay;
 
@@ -33,10 +36,12 @@ class FlipAnimation extends StatelessWidget {
   const FlipAnimation({
     Key key,
     this.duration,
+    this.curve,
     this.delay,
     this.flipAxis = FlipAxis.x,
     @required this.child,
   })  : assert(child != null),
+        assert(curve != null),
         super(key: key);
 
   @override
@@ -52,7 +57,7 @@ class FlipAnimation extends StatelessWidget {
     final _flipAnimation = Tween<double>(begin: 0, end: 1).animate(
       CurvedAnimation(
         parent: animation,
-        curve: Interval(0.0, 1.0, curve: Curves.ease),
+        curve: const Interval(0.0, 1.0, curve: Curves.ease),
       ),
     );
 

@@ -6,6 +6,9 @@ class ScaleAnimation extends StatelessWidget {
   /// The duration of the child animation.
   final Duration duration;
 
+  /// The curve of the child animation. Defaults to [Curves.ease]
+  final Curve curve;
+
   /// The delay between the beginning of two children's animations.
   final Duration delay;
 
@@ -23,10 +26,12 @@ class ScaleAnimation extends StatelessWidget {
   const ScaleAnimation({
     Key key,
     this.duration,
+    this.curve = Curves.ease,
     this.delay,
     this.scale = 0.0,
     @required this.child,
   })  : assert(child != null),
+        assert(curve != null),
         assert(scale != null && scale >= 0.0),
         super(key: key);
 
@@ -43,7 +48,7 @@ class ScaleAnimation extends StatelessWidget {
     final _landingAnimation = Tween<double>(begin: scale, end: 1.0).animate(
       CurvedAnimation(
         parent: animation,
-        curve: Interval(0.0, 1.0, curve: Curves.ease),
+        curve: Interval(0.0, 1.0, curve: curve),
       ),
     );
 
