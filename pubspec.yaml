@@ -10,7 +10,7 @@ repository: https://github.com/mobiten/flutter_staggered_animations
 issue_tracker: https://github.com/mobiten/flutter_staggered_animations/issues
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.8.0 <3.0.0"
 
 dependencies:
   flutter:
