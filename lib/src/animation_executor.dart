@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/widgets.dart';
+
 import 'animation_limiter.dart';
 
 typedef Builder = Widget Function(
@@ -10,12 +11,14 @@ class AnimationExecutor extends StatefulWidget {
   final Duration duration;
   final Duration delay;
   final Builder builder;
+  final AnimationStatusListener animationStatusListener;
 
   const AnimationExecutor({
     Key key,
     @required this.duration,
     this.delay = Duration.zero,
     @required this.builder,
+    this.animationStatusListener,
   })  : assert(builder != null),
         super(key: key);
 
@@ -35,6 +38,10 @@ class _AnimationExecutorState extends State<AnimationExecutor>
     _animationController =
         AnimationController(duration: widget.duration, vsync: this);
 
+    if (widget.animationStatusListener != null) {
+      _animationController.addStatusListener(widget.animationStatusListener);
+    }
+
     if (AnimationLimiter.shouldRunAnimation(context) ?? true) {
       _timer = Timer(widget.delay, () => _animationController.forward());
     } else {
@@ -53,6 +60,9 @@ class _AnimationExecutorState extends State<AnimationExecutor>
   @override
   void dispose() {
     _timer?.cancel();
+    if (widget.animationStatusListener != null) {
+      _animationController.removeStatusListener(widget.animationStatusListener);
+    }
     _animationController.dispose();
     super.dispose();
   }
