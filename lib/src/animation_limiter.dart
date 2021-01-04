@@ -23,14 +23,17 @@ class AnimationLimiter extends StatefulWidget {
   const AnimationLimiter({
     Key key,
     @required this.child,
-  })  : assert(child != null),
+  })
+      : assert(child != null),
         super(key: key);
 
   @override
   _AnimationLimiterState createState() => _AnimationLimiterState();
 
   static bool shouldRunAnimation(BuildContext context) {
-    return _AnimationLimiterProvider.of(context)?.shouldRunAnimation;
+    return _AnimationLimiterProvider
+        .of(context)
+        ?.shouldRunAnimation;
   }
 }
 
@@ -65,7 +68,8 @@ class _AnimationLimiterProvider extends InheritedWidget {
   _AnimationLimiterProvider({
     this.shouldRunAnimation,
     @required Widget child,
-  })  : assert(child != null),
+  })
+      : assert(child != null),
         super(child: child);
 
   @override
@@ -75,6 +79,6 @@ class _AnimationLimiterProvider extends InheritedWidget {
 
   static _AnimationLimiterProvider of(BuildContext context) {
     return context.ancestorWidgetOfExactType(_AnimationLimiterProvider)
-        as _AnimationLimiterProvider;
+    as _AnimationLimiterProvider;
   }
 }
