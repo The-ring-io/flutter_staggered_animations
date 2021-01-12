@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+
 import 'animation_configuration.dart';
 import 'animation_executor.dart';
 
@@ -44,6 +45,7 @@ class AnimationConfigurator extends StatelessWidget {
       delay: stagger(_position, _duration, _delay, _columnCount),
       builder: (context, animationController) =>
           animatedChildBuilder(animationController),
+      animationStatusListener: animationConfiguration.animationStatusListener,
     );
   }
 

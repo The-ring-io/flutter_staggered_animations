@@ -26,15 +26,21 @@ class AnimationConfiguration extends InheritedWidget {
   /// The column count of the grid
   final int columnCount;
 
+  /// The animation listener
+  final AnimationStatusListener animationStatusListener;
+
   /// Configure the children's animation to be synchronized (all the children's animation start at the same time).
   ///
   /// Default value for [duration] is 225ms.
   ///
   /// The [child] argument must not be null.
+  ///
+  /// [animationStatusListener] allows you react on animation status changes.
   const AnimationConfiguration.synchronized({
     Key key,
     this.duration = const Duration(milliseconds: 225),
     @required Widget child,
+    this.animationStatusListener,
   })  : position = 0,
         delay = Duration.zero,
         columnCount = 1,
@@ -61,12 +67,15 @@ class AnimationConfiguration extends InheritedWidget {
   /// (appropriate factor to keep coherence during the animation).
   ///
   /// The [child] argument must not be null.
+  ///
+  /// [animationStatusListener] allows you react on animation status changes.
   const AnimationConfiguration.staggeredList({
     Key key,
     @required this.position,
     this.duration = const Duration(milliseconds: 225),
     this.delay,
     @required Widget child,
+    this.animationStatusListener,
   })  : columnCount = 1,
         assert(duration != null),
         assert(child != null),
@@ -93,6 +102,8 @@ class AnimationConfiguration extends InheritedWidget {
   /// The [columnCount] argument must not be null and must be greater than 0.
   ///
   /// The [child] argument must not be null.
+  ///
+  /// [animationStatusListener] allows you react on animation status changes.
   const AnimationConfiguration.staggeredGrid({
     Key key,
     @required this.position,
@@ -100,6 +111,7 @@ class AnimationConfiguration extends InheritedWidget {
     this.delay,
     @required this.columnCount,
     @required Widget child,
+    this.animationStatusListener,
   })  : assert(duration != null),
         assert(columnCount != null && columnCount > 0),
         assert(child != null),
@@ -135,11 +147,14 @@ class AnimationConfiguration extends InheritedWidget {
   ///
   /// The [children] argument must not be null.
   /// It corresponds to the children you would normally have passed to the [Column] or [Row].
+  ///
+  /// [animationStatusListener] allows you react on animation status changes.
   static List<Widget> toStaggeredList({
     Duration duration,
     Duration delay,
     @required Widget Function(Widget) childAnimationBuilder,
     @required List<Widget> children,
+    AnimationStatusListener animationStatusListener,
   }) =>
       children
           .asMap()
@@ -148,6 +163,7 @@ class AnimationConfiguration extends InheritedWidget {
               index,
               AnimationConfiguration.staggeredList(
                 position: index,
+                animationStatusListener: animationStatusListener,
                 duration: duration ?? const Duration(milliseconds: 225),
                 delay: delay,
                 child: childAnimationBuilder(widget),

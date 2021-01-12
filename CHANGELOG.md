@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [NEXT]
+### Added
+- AnimationConfiguration have not `animationStatusListener` parameter that allows you react on animation status changes
+
 ## [0.1.2] - 2019-09-11
 ### Fixed
 - [#1](https://github.com/mobiten/flutter_staggered_animations/issues/1) Do not forward animation after dispose 
