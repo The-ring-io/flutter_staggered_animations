@@ -72,7 +72,6 @@ class _AnimationLimiterProvider extends InheritedWidget {
   }
 
   static _AnimationLimiterProvider of(BuildContext context) {
-    return context.ancestorWidgetOfExactType(_AnimationLimiterProvider)
-        as _AnimationLimiterProvider;
+    return context.findAncestorWidgetOfExactType<_AnimationLimiterProvider>();
   }
 }
