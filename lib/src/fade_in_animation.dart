@@ -9,6 +9,9 @@ class FadeInAnimation extends StatelessWidget {
   /// The delay between the beginning of two children's animations.
   final Duration delay;
 
+  /// The curve of the child animation. Defaults to [Curves.ease].
+  final Curve curve;
+
   /// The child Widget to animate.
   final Widget child;
 
@@ -19,6 +22,7 @@ class FadeInAnimation extends StatelessWidget {
     Key key,
     this.duration,
     this.delay,
+    this.curve = Curves.ease,
     @required this.child,
   })  : assert(child != null),
         super(key: key);
@@ -36,7 +40,7 @@ class FadeInAnimation extends StatelessWidget {
     final _opacityAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(
         parent: animation,
-        curve: Interval(0.0, 1.0, curve: Curves.ease),
+        curve: Interval(0.0, 1.0, curve: curve),
       ),
     );
 

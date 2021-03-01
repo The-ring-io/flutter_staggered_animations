@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+
 import 'animation_configurator.dart';
 
 /// An animation that slides its child.
@@ -8,6 +9,9 @@ class SlideAnimation extends StatelessWidget {
 
   /// The delay between the beginning of two children's animations.
   final Duration delay;
+
+  /// The curve of the child animation. Defaults to [Curves.ease].
+  final Curve curve;
 
   /// The vertical offset to apply at the start of the animation (can be negative).
   final double verticalOffset;
@@ -29,6 +33,7 @@ class SlideAnimation extends StatelessWidget {
     Key key,
     this.duration,
     this.delay,
+    this.curve = Curves.ease,
     double verticalOffset,
     this.horizontalOffset = 0.0,
     @required this.child,
@@ -53,7 +58,7 @@ class SlideAnimation extends StatelessWidget {
       return Tween<double>(begin: offset, end: 0.0).animate(
         CurvedAnimation(
           parent: animation,
-          curve: Interval(0.0, 1.0, curve: Curves.ease),
+          curve: Interval(0.0, 1.0, curve: curve),
         ),
       );
     }
