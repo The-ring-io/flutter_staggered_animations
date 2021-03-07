@@ -31,8 +31,7 @@ class ScaleAnimation extends StatelessWidget {
     this.curve = Curves.ease,
     this.scale = 0.0,
     required this.child,
-  })  : assert(child != null),
-        assert(scale != null && scale >= 0.0),
+  })   : assert(scale >= 0.0),
         super(key: key);
 
   @override

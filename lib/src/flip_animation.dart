@@ -40,8 +40,7 @@ class FlipAnimation extends StatelessWidget {
     this.curve = Curves.ease,
     this.flipAxis = FlipAxis.x,
     required this.child,
-  })  : assert(child != null),
-        super(key: key);
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

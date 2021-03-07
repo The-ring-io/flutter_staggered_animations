@@ -37,10 +37,7 @@ class SlideAnimation extends StatelessWidget {
     double? verticalOffset,
     this.horizontalOffset = 0.0,
     required this.child,
-  })  : verticalOffset = (verticalOffset == null && horizontalOffset == null)
-            ? 50.0
-            : (verticalOffset ?? 0.0),
-        assert(child != null),
+  })   : verticalOffset = verticalOffset == null ? 50.0 : 0.0,
         super(key: key);
 
   @override

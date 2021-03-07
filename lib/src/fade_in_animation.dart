@@ -24,8 +24,7 @@ class FadeInAnimation extends StatelessWidget {
     this.delay,
     this.curve = Curves.ease,
     required this.child,
-  })  : assert(child != null),
-        super(key: key);
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

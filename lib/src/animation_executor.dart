@@ -16,8 +16,7 @@ class AnimationExecutor extends StatefulWidget {
     required this.duration,
     this.delay = Duration.zero,
     required this.builder,
-  })  : assert(builder != null),
-        super(key: key);
+  }) : super(key: key);
 
   @override
   _AnimationExecutorState createState() => _AnimationExecutorState();
