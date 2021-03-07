@@ -34,7 +34,7 @@ class AnimationConfigurator extends StatelessWidget {
       );
     }
 
-    final _position = animationConfiguration.position ?? 0;
+    final _position = animationConfiguration.position;
     final _duration = duration ?? animationConfiguration.duration;
     final _delay = delay ?? animationConfiguration.delay;
     final _columnCount = animationConfiguration.columnCount;
