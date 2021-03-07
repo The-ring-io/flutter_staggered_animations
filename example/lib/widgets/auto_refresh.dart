@@ -11,8 +11,7 @@ class AutoRefresh extends StatefulWidget {
     Key? key,
     required this.duration,
     required this.child,
-  })  : assert(duration != null),
-        super(key: key);
+  }) : super(key: key);
 
   @override
   _AutoRefreshState createState() => _AutoRefreshState();

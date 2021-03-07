@@ -5,6 +5,9 @@ All notable changes to this project will be documented in this file.
 ### Added
 - Migrated to null safety
 
+### Fixed
+- Changed `RaisedButton` to `ElevationButton` in example
+
 ## [0.1.3] - 2021-03-04
 ### Fixed
 - Fix deprecated call to `ancestorWidgetOfExactType` (method has been removed from Flutter 2.0) [#34](https://github.com/mobiten/flutter_staggered_animations/issues/34) [#29](https://github.com/mobiten/flutter_staggered_animations/issues/29)
