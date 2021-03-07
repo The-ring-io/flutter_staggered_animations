@@ -8,9 +8,9 @@ class AutoRefresh extends StatefulWidget {
   final Widget child;
 
   AutoRefresh({
-    Key key,
-    @required this.duration,
-    @required this.child,
+    Key? key,
+    required this.duration,
+    required this.child,
   })  : assert(duration != null),
         super(key: key);
 
@@ -19,10 +19,10 @@ class AutoRefresh extends StatefulWidget {
 }
 
 class _AutoRefreshState extends State<AutoRefresh> {
-  int keyValue;
-  ValueKey key;
+  int? keyValue;
+  ValueKey? key;
 
-  Timer _timer;
+  Timer? _timer;
 
   @override
   void initState() {
@@ -47,7 +47,7 @@ class _AutoRefreshState extends State<AutoRefresh> {
       widget.duration,
       () {
         setState(() {
-          keyValue = keyValue + 1;
+          keyValue = keyValue! + 1;
           key = ValueKey(keyValue);
           _recursiveBuild();
         });

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class EmptyCard extends StatelessWidget {
-  final double width;
-  final double height;
+  final double? width;
+  final double? height;
 
   const EmptyCard({
-    Key key,
+    Key? key,
     this.width,
     this.height,
   }) : super(key: key);
