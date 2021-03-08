@@ -20,7 +20,7 @@ class App extends StatelessWidget {
 }
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key key}) : super(key: key);
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            RaisedButton(
+            ElevatedButton(
               child: const Text('List Card Test'),
               onPressed: () {
                 Navigator.push(
@@ -40,7 +40,7 @@ class HomeScreen extends StatelessWidget {
                 );
               },
             ),
-            RaisedButton(
+            ElevatedButton(
               child: const Text('Grid Card Test'),
               onPressed: () {
                 Navigator.push(
@@ -49,7 +49,7 @@ class HomeScreen extends StatelessWidget {
                 );
               },
             ),
-            RaisedButton(
+            ElevatedButton(
               child: const Text('Column Card Test'),
               onPressed: () {
                 Navigator.push(

@@ -4,7 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'animation_limiter.dart';
 
 typedef Builder = Widget Function(
-    BuildContext context, AnimationController animationController);
+    BuildContext context, AnimationController? animationController);
 
 class AnimationExecutor extends StatefulWidget {
   final Duration duration;
@@ -12,12 +12,11 @@ class AnimationExecutor extends StatefulWidget {
   final Builder builder;
 
   const AnimationExecutor({
-    Key key,
-    @required this.duration,
+    Key? key,
+    required this.duration,
     this.delay = Duration.zero,
-    @required this.builder,
-  })  : assert(builder != null),
-        super(key: key);
+    required this.builder,
+  }) : super(key: key);
 
   @override
   _AnimationExecutorState createState() => _AnimationExecutorState();
@@ -25,8 +24,8 @@ class AnimationExecutor extends StatefulWidget {
 
 class _AnimationExecutorState extends State<AnimationExecutor>
     with SingleTickerProviderStateMixin {
-  AnimationController _animationController;
-  Timer _timer;
+  AnimationController? _animationController;
+  Timer? _timer;
 
   @override
   void initState() {
@@ -36,9 +35,9 @@ class _AnimationExecutorState extends State<AnimationExecutor>
         AnimationController(duration: widget.duration, vsync: this);
 
     if (AnimationLimiter.shouldRunAnimation(context) ?? true) {
-      _timer = Timer(widget.delay, () => _animationController.forward());
+      _timer = Timer(widget.delay, () => _animationController!.forward());
     } else {
-      _animationController.value = 1.0;
+      _animationController!.value = 1.0;
     }
   }
 
@@ -46,18 +45,18 @@ class _AnimationExecutorState extends State<AnimationExecutor>
   Widget build(BuildContext context) {
     return AnimatedBuilder(
       builder: _buildAnimation,
-      animation: _animationController,
+      animation: _animationController!,
     );
   }
 
   @override
   void dispose() {
     _timer?.cancel();
-    _animationController.dispose();
+    _animationController!.dispose();
     super.dispose();
   }
 
-  Widget _buildAnimation(BuildContext context, Widget child) {
+  Widget _buildAnimation(BuildContext context, Widget? child) {
     return widget.builder(context, _animationController);
   }
 }

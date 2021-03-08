@@ -3,15 +3,15 @@ import 'animation_configuration.dart';
 import 'animation_executor.dart';
 
 class AnimationConfigurator extends StatelessWidget {
-  final Duration duration;
-  final Duration delay;
+  final Duration? duration;
+  final Duration? delay;
   final Widget Function(Animation<double>) animatedChildBuilder;
 
   const AnimationConfigurator({
-    Key key,
+    Key? key,
     this.duration,
     this.delay,
-    @required this.animatedChildBuilder,
+    required this.animatedChildBuilder,
   }) : super(key: key);
 
   @override
@@ -34,7 +34,7 @@ class AnimationConfigurator extends StatelessWidget {
       );
     }
 
-    final _position = animationConfiguration.position ?? 0;
+    final _position = animationConfiguration.position;
     final _duration = duration ?? animationConfiguration.duration;
     final _delay = delay ?? animationConfiguration.delay;
     final _columnCount = animationConfiguration.columnCount;
@@ -43,12 +43,12 @@ class AnimationConfigurator extends StatelessWidget {
       duration: _duration,
       delay: stagger(_position, _duration, _delay, _columnCount),
       builder: (context, animationController) =>
-          animatedChildBuilder(animationController),
+          animatedChildBuilder(animationController!),
     );
   }
 
   Duration stagger(
-      int position, Duration duration, Duration delay, int columnCount) {
+      int position, Duration duration, Duration? delay, int columnCount) {
     var delayInMilliseconds =
         (delay == null ? duration.inMilliseconds ~/ 6 : delay.inMilliseconds);
 

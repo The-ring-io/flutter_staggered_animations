@@ -5,7 +5,7 @@ import '../widgets/auto_refresh.dart';
 import '../widgets/empty_card.dart';
 
 class CardColumnScreen extends StatefulWidget {
-  CardColumnScreen({Key key}) : super(key: key);
+  CardColumnScreen({Key? key}) : super(key: key);
 
   @override
   _CardColumnScreenState createState() => _CardColumnScreenState();
