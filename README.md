@@ -1,3 +1,5 @@
+[![Pub](https://img.shields.io/pub/v/flutter_staggered_animations)](https://pub.dev/packages/flutter_staggered_animations)
+
 # Flutter Staggered Animations
 
 Easily add staggered animations to your `ListView`, `GridView`, `Column` and `Row` children as shown in [Material Design guidelines](https://material.io/design/motion/customization.html#sequencing)
