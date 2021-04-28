@@ -21,7 +21,7 @@ If you want to keep using `flutter_staggered_animations` but cannot migrate to n
 Add the package as a dependency in your pubspec.yaml file.
 ```yaml
 dependencies:
-  flutter_staggered_animations: "^1.0.0"
+  flutter_staggered_animations: ^1.0.0
 ```
 
 ### Import
