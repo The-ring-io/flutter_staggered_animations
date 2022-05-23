@@ -1,5 +1,13 @@
 import 'package:flutter/widgets.dart';
 
+/// This allows a value of type T or T?
+/// to be treated as a value of type T?.
+///
+/// We use this so that APIs that have become
+/// non-nullable can still be used with `!` and `?`
+/// to support older versions of the API as well.
+T? _ambiguate<T>(T? value) => value;
+
 /// In the context of a scrollable view, your children's animations are only built
 /// as the user scrolls and they appear on the screen.
 ///
@@ -39,8 +47,7 @@ class _AnimationLimiterState extends State<AnimationLimiter> {
   @override
   void initState() {
     super.initState();
-
-    WidgetsBinding.instance!.addPostFrameCallback((Duration value) {
+    _ambiguate(WidgetsBinding.instance)!.addPostFrameCallback((Duration value) {
       if (!mounted) return;
       setState(() {
         _shouldRunAnimation = false;
