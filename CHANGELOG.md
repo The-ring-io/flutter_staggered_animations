@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.1] - 2022-08-23
+### Added
+- Changed example project Dart version to 2.17.0 for consistency with the package version
+
 ## [1.1.0] - 2022-08-23
 ### Added
 - Upgraded to dart 2.17
