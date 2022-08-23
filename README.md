@@ -10,6 +10,11 @@ Easily add staggered animations to your `ListView`, `GridView`, `Column` and `Ro
 | ---                       | ---                        | ---                          |
 |![](https://github.com/mobiten/flutter_staggered_animations/blob/master/assets/card_list.gif?raw=true)  | ![](https://github.com/mobiten/flutter_staggered_animations/blob/master/assets/card_grid.gif?raw=true)  | ![](https://github.com/mobiten/flutter_staggered_animations/blob/master/assets/card_column.gif?raw=true)  |
 
+## Flutter 3.0 and breaking changes
+
+Starting version 1.1.0 `flutter_staggered_animations` requires Dart SDK 2.17 minimum.
+If you want to keep using `flutter_staggered_animations` but cannot migrate to Dart SDK 2.17 yet, use the version 1.0.0 instead.
+
 ## Flutter 2.0 and null-safety
 
 From 1.0.0 and onwards, `flutter_staggered_animations` is null-safe and requires Dart SDK 2.12.0 minimum.
