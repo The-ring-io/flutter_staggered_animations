@@ -141,7 +141,7 @@ class AnimationConfiguration extends InheritedWidget {
   ///     return 1;
   ///   }
   ///   return null;
-  /// },
+  /// }
   /// ```
   ///
   /// This will result in wrapping the child at index 1 in an [Expanded] widget of flex factor 1.
