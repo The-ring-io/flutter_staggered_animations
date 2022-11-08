@@ -35,7 +35,7 @@ class AnimationConfiguration extends InheritedWidget {
     Key? key,
     this.duration = const Duration(milliseconds: 225),
     required Widget child,
-  })   : position = 0,
+  })  : position = 0,
         delay = Duration.zero,
         columnCount = 1,
         super(key: key, child: child);
@@ -65,7 +65,7 @@ class AnimationConfiguration extends InheritedWidget {
     this.duration = const Duration(milliseconds: 225),
     this.delay,
     required Widget child,
-  })   : columnCount = 1,
+  })  : columnCount = 1,
         super(key: key, child: child);
 
   /// Configure the children's animation to be staggered.
@@ -128,23 +128,59 @@ class AnimationConfiguration extends InheritedWidget {
   ///
   /// The [children] argument must not be null.
   /// It corresponds to the children you would normally have passed to the [Column] or [Row].
+  ///
+  /// The [expandedFlexFactor] is a function, that will determine wheather to wrap the child widget at present index with [Expanded] widget.
+  ///
+  /// If the returned flex factor is non-null, the child widget at current index will be wrapped with [Expanded] widget with the flex factor returned by this function.
+  ///
+  /// For example:
+  ///
+  /// ```dart
+  /// expandedFlexFactor: (index) {
+  ///   if (index == 1) {
+  ///     return 1;
+  ///   }
+  ///   return null;
+  /// },
+  /// ```
+  ///
+  /// This will result in wrapping the child at index 1 in an [Expanded] widget of flex factor 1.
+  ///
+  /// If the child widget at that index should not be in an Expanded widget, the flex factor returned by this function should be null.
+  ///
+  ///
   static List<Widget> toStaggeredList({
     Duration? duration,
     Duration? delay,
     required Widget Function(Widget) childAnimationBuilder,
     required List<Widget> children,
+    int? Function(int index)? expandedFlexFactor,
   }) =>
       children
           .asMap()
           .map((index, widget) {
+            final Widget child = AnimationConfiguration.staggeredList(
+              position: index,
+              duration: duration ?? const Duration(milliseconds: 225),
+              delay: delay,
+              child: childAnimationBuilder(widget),
+            );
+
+            if (expandedFlexFactor == null) {
+              return MapEntry(
+                index,
+                child,
+              );
+            }
+            final flex = expandedFlexFactor(index);
             return MapEntry(
               index,
-              AnimationConfiguration.staggeredList(
-                position: index,
-                duration: duration ?? const Duration(milliseconds: 225),
-                delay: delay,
-                child: childAnimationBuilder(widget),
-              ),
+              flex != null
+                  ? Expanded(
+                      flex: flex,
+                      child: child,
+                    )
+                  : child,
             );
           })
           .values
