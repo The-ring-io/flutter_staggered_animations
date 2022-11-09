@@ -130,7 +130,7 @@ class AnimationConfiguration extends InheritedWidget {
   ///
   /// If the returned widget is null, the resulting child widget at current index will be kept in it's place.
   ///
-  /// This can be used to wrap the resulting child with [Expanded] or [Flex] widget, if needed.
+  /// This can be used to wrap the resulting child with [Expanded] or [Flexible] widget, if needed.
   ///
   /// The [children] argument must not be null.
   /// It corresponds to the children you would normally have passed to the [Column] or [Row].
