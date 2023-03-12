@@ -26,7 +26,7 @@ class AnimationLimiter extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _AnimationLimiterState createState() => _AnimationLimiterState();
+  State<AnimationLimiter> createState() => _AnimationLimiterState();
 
   static bool? shouldRunAnimation(BuildContext context) {
     return _AnimationLimiterProvider.of(context)?.shouldRunAnimation;

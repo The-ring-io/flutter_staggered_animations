@@ -5,10 +5,10 @@ import '../widgets/auto_refresh.dart';
 import '../widgets/empty_card.dart';
 
 class CardGridScreen extends StatefulWidget {
-  CardGridScreen({Key? key}) : super(key: key);
+  const CardGridScreen({Key? key}) : super(key: key);
 
   @override
-  _CardGridScreenState createState() => _CardGridScreenState();
+  State<CardGridScreen> createState() => _CardGridScreenState();
 }
 
 class _CardGridScreenState extends State<CardGridScreen> {

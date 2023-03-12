@@ -20,7 +20,7 @@ class AnimationExecutor extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _AnimationExecutorState createState() => _AnimationExecutorState();
+  State<AnimationExecutor> createState() => _AnimationExecutorState();
 }
 
 class _AnimationExecutorState extends State<AnimationExecutor>

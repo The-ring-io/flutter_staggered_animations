@@ -4,9 +4,11 @@ import 'screens/card_column_screen.dart';
 import 'screens/card_grid_screen.dart';
 import 'screens/card_list_screen.dart';
 
-void main() => runApp(App());
+void main() => runApp(const App());
 
 class App extends StatelessWidget {
+  const App({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -25,7 +27,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: SizedBox(
         height: double.infinity,
         width: double.infinity,
         child: Column(
@@ -36,7 +38,8 @@ class HomeScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => CardListScreen()),
+                  MaterialPageRoute(
+                      builder: (context) => const CardListScreen()),
                 );
               },
             ),
@@ -45,7 +48,8 @@ class HomeScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => CardGridScreen()),
+                  MaterialPageRoute(
+                      builder: (context) => const CardGridScreen()),
                 );
               },
             ),
@@ -54,7 +58,8 @@ class HomeScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => CardColumnScreen()),
+                  MaterialPageRoute(
+                      builder: (context) => const CardColumnScreen()),
                 );
               },
             ),

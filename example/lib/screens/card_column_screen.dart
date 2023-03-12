@@ -5,10 +5,10 @@ import '../widgets/auto_refresh.dart';
 import '../widgets/empty_card.dart';
 
 class CardColumnScreen extends StatefulWidget {
-  CardColumnScreen({Key? key}) : super(key: key);
+  const CardColumnScreen({Key? key}) : super(key: key);
 
   @override
-  _CardColumnScreenState createState() => _CardColumnScreenState();
+  State<CardColumnScreen> createState() => _CardColumnScreenState();
 }
 
 class _CardColumnScreenState extends State<CardColumnScreen> {
@@ -37,26 +37,26 @@ class _CardColumnScreenState extends State<CardColumnScreen> {
                       padding: const EdgeInsets.symmetric(vertical: 8.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          const EmptyCard(height: 50.0, width: 50.0),
-                          const EmptyCard(height: 50.0, width: 50.0),
-                          const EmptyCard(height: 50.0, width: 50.0),
+                        children: const [
+                          EmptyCard(height: 50.0, width: 50.0),
+                          EmptyCard(height: 50.0, width: 50.0),
+                          EmptyCard(height: 50.0, width: 50.0),
                         ],
                       ),
                     ),
                     Row(
-                      children: [
-                        const Flexible(child: EmptyCard(height: 150.0)),
-                        const Flexible(child: EmptyCard(height: 150.0)),
+                      children: const [
+                        Flexible(child: EmptyCard(height: 150.0)),
+                        Flexible(child: EmptyCard(height: 150.0)),
                       ],
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 8.0),
                       child: Row(
-                        children: [
-                          const Flexible(child: EmptyCard(height: 50.0)),
-                          const Flexible(child: EmptyCard(height: 50.0)),
-                          const Flexible(child: EmptyCard(height: 50.0)),
+                        children: const [
+                          Flexible(child: EmptyCard(height: 50.0)),
+                          Flexible(child: EmptyCard(height: 50.0)),
+                          Flexible(child: EmptyCard(height: 50.0)),
                         ],
                       ),
                     ),
