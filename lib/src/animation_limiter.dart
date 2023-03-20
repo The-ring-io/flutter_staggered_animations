@@ -60,7 +60,7 @@ class _AnimationLimiterState extends State<AnimationLimiter> {
 class _AnimationLimiterProvider extends InheritedWidget {
   final bool? shouldRunAnimation;
 
-  _AnimationLimiterProvider({
+  const _AnimationLimiterProvider({
     this.shouldRunAnimation,
     required Widget child,
   }) : super(child: child);
