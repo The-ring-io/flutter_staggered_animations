@@ -15,8 +15,8 @@ platforms:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_lints: ^2.0.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  pedantic: ^1.7.0

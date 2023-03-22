@@ -26,7 +26,7 @@ class AnimationLimiter extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _AnimationLimiterState createState() => _AnimationLimiterState();
+  State<AnimationLimiter> createState() => _AnimationLimiterState();
 
   static bool? shouldRunAnimation(BuildContext context) {
     return _AnimationLimiterProvider.of(context)?.shouldRunAnimation;
@@ -60,7 +60,7 @@ class _AnimationLimiterState extends State<AnimationLimiter> {
 class _AnimationLimiterProvider extends InheritedWidget {
   final bool? shouldRunAnimation;
 
-  _AnimationLimiterProvider({
+  const _AnimationLimiterProvider({
     this.shouldRunAnimation,
     required Widget child,
   }) : super(child: child);
