@@ -103,7 +103,7 @@ class AnimationConfiguration extends InheritedWidget {
     return false;
   }
 
-  /// Helper method to apply a staggered animation to the children of a [Column] or [Row].
+    /// Helper method to apply a staggered animation to the children of a [Column] or [Row].
   ///
   /// It maps every child with an index and calls
   /// [AnimationConfiguration.staggeredList] constructor under the hood.
@@ -126,29 +126,56 @@ class AnimationConfiguration extends InheritedWidget {
   /// )
   /// ```
   ///
+  /// The [wrapperBuilder] is a function to wrap the resulting child widget at current index with another widget.
+  ///
+  /// If the returned widget is null, the resulting child widget at current index will be kept in it's place.
+  ///
+  /// This can be used to wrap the resulting child with [Expanded] or [Flexible] widget, if needed.
+  ///
   /// The [children] argument must not be null.
   /// It corresponds to the children you would normally have passed to the [Column] or [Row].
+  ///
   static List<Widget> toStaggeredList({
     Duration? duration,
     Duration? delay,
     required Widget Function(Widget) childAnimationBuilder,
     required List<Widget> children,
-  }) =>
-      children
+    Widget? Function(int index, Widget child)? wrapperBuilder,
+  }) {
+    var result = children
+        .asMap()
+        .map<int, Widget>((index, currentChild) {
+          final Widget child = AnimationConfiguration.staggeredList(
+            position: index,
+            duration: duration ?? const Duration(milliseconds: 225),
+            delay: delay,
+            child: childAnimationBuilder(currentChild),
+          );
+          return MapEntry(
+            index,
+            child,
+          );
+        })
+        .values
+        .toList();
+
+    if (wrapperBuilder != null) {
+      result = result
           .asMap()
-          .map((index, widget) {
-            return MapEntry(
+          .map<int, Widget>((index, currentChild) {
+            final resultChild = wrapperBuilder(index, currentChild);
+
+            return MapEntry<int, Widget>(
               index,
-              AnimationConfiguration.staggeredList(
-                position: index,
-                duration: duration ?? const Duration(milliseconds: 225),
-                delay: delay,
-                child: childAnimationBuilder(widget),
-              ),
+              resultChild ?? currentChild,
             );
           })
           .values
           .toList();
+    }
+
+    return result;
+  }
 
   static AnimationConfiguration? of(BuildContext context) {
     return context.findAncestorWidgetOfExactType<AnimationConfiguration>();
